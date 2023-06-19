@@ -21,15 +21,15 @@ function countdown() {
     let minutes = Number(minutesDisplay.textContent);
 
     if (seconds <= 0) {
-      seconds = 60;
-      minutesDisplay.textContent = minutes - 1;
-    }
-
-    if(minutes <= 0) {
-        
+      seconds = 2;
+      minutesDisplay.textContent = String(minutes - 1).padStart(2, "0");
     }
 
     secondsDisplay.textContent = String(seconds - 1).padStart(2, "0");
+
+    if (minutes <= 0) {
+      return;
+    }
 
     countdown();
   }, 1000);
@@ -68,5 +68,5 @@ function cliqueiButtonSoundOff() {
 
 function horarioSet() {
   minutes = prompt("Quantos minutos?");
-  minutesDisplay.textContent = minutes;
+  minutesDisplay.textContent = String(minutes).padStart(2, "0");
 }
