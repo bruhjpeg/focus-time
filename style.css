@@ -17,11 +17,27 @@ body {
   font-size: 1.6rem;
   background-color: var(--bg-color);
   color: var(--text-color);
+
+  display: grid;
+  min-height: 100vh;
+}
+
+main {
+  align-self: self-end;
+  justify-self: center;
+}
+
+footer {
+  align-self: end;
+  justify-self: end;
+
+  padding: 0 4rem 3.2rem 0;
 }
 
 #timer {
   font-size: 8.8rem;
   display: flex;
+  margin-bottom: 1.6rem;
 }
 
 button {
@@ -40,8 +56,6 @@ button {
 .sound-on svg path {
   fill: var(--primary-color);
 }
-
-
 
 #controls {
   background-color: var(--bg-primary-light);
