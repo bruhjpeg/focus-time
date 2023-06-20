@@ -15,21 +15,28 @@ buttonSoundOn.addEventListener("click", cliqueiButtonSoundOn);
 buttonSoundOff.addEventListener("click", cliqueiButtonSoundOff);
 buttonSet.addEventListener("click", horarioSet);
 
+function updateTimerDisplay(minutes, seconds) {
+  minutesDisplay.textContent = String(minutes).padStart(2, "0");
+  secondsDisplay.textContent = String(seconds).padStart(2, "0");
+}
+
 function countdown() {
   setTimeout(function () {
     let seconds = Number(secondsDisplay.textContent);
     let minutes = Number(minutesDisplay.textContent);
 
+    secondsDisplay.textContent = "00";
+
+    if (minutes <= 0) {
+      cliqueiButtonStop();
+      return;
+    }
+
     if (seconds <= 0) {
       seconds = 2;
       minutesDisplay.textContent = String(minutes - 1).padStart(2, "0");
     }
-
     secondsDisplay.textContent = String(seconds - 1).padStart(2, "0");
-
-    if (minutes <= 0) {
-      return;
-    }
 
     countdown();
   }, 1000);
@@ -68,5 +75,5 @@ function cliqueiButtonSoundOff() {
 
 function horarioSet() {
   minutes = prompt("Quantos minutos?");
-  minutesDisplay.textContent = String(minutes).padStart(2, "0");
+  updateTimerDisplay(minutes, 0);
 }
